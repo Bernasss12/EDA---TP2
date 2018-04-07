@@ -1,3 +1,19 @@
+/// Trabalho realizado no ambito da cadeira de EDA ///
+//              Trabalho realizado por:             //
+//                                                  //
+//            Bernardo Antunes nº 44006             //
+//             Pedro Rodrigues nº 43997             //
+//                                                  //
+//                     Docentes:                    //
+//               Eng. Fernando Melicio              //
+//               Eng. Fernando Pereira              //
+//                 Eng. José Ribeiro                //
+//                                                  //
+//           Semestre de verão  2017/2018           //
+//                 Data: 04/04/2018                 //
+//                                                  //
+/// ---------------------------------------------- ///
+
 #include "matriz.h"
 #include <stdlib.h>
 #include <stdio.h>
@@ -12,25 +28,14 @@ int main()
 
 	if (matriz_a.Ler(path))
 	{
-		printf("\nSuccess\n");
+		printf("\nSuccess\n\n\n");
 	}else
 	{
-		printf("\nFail\n");
+		printf("\nFail\n\n\n");
 	};
 	matriz_a.Escrever();
 
-	matriz_b = matriz_a;
-	matriz_c = matriz_a + matriz_b;
-
-	matriz_b.Escrever();
-
-	matriz_c.Escrever();
-
-	matriz_a.PodeMultiplicar(&matriz_b);
-
-	matriz_c = matriz_a * matriz_b;
-
-	matriz_c.Escrever();
+	//Este ficheiro não contém nada de relevante para o trabalho e foi apenas utilizado para confirmar que todos os métodos, operadores e contrutores funcionavam como desejado.
 
 	system("pause");
 	return 0;
