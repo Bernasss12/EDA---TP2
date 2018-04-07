@@ -75,3 +75,81 @@ void Matriz::Escrever()
 		printf("\n");
 	}
 }
+
+Matriz::~Matriz()
+{
+	Apagar();
+}
+
+bool Matriz::PodeSomar(const Matriz* pm)
+{
+	return linhas == pm->linhas && colunas == pm->colunas;
+}
+
+bool Matriz::PodeMultiplicar(const Matriz* pm)
+{
+	return colunas == pm->linhas;
+}
+
+const Matriz& Matriz::operator = (const Matriz& m1)
+{
+	Iniciar(m1.linhas, m1.colunas);
+	for (int i = 0; i < m1.linhas; i++)
+	{
+		for (int j = 0; j < colunas; j++)
+		{
+			elems[i][j] = m1.elems[i][j];
+		}
+	}
+
+	return *this;
+} // Operador que dá à matriz do lado esquerdo os valores d matriz do lado direito.
+
+Matriz Matriz::operator + (const Matriz& m1)
+{
+	if (PodeSomar(&m1)) {
+		for (int i = 0; i < linhas; i++)
+		{
+			for (int j = 0; j < colunas; j++)
+			{
+				elems[i][j] += m1.elems[i][j];
+			}
+		}
+	}
+	else
+	{
+		printf("\nA soma nao eh possivel");
+	}
+
+	return *this;
+} // Operador que soma à matriz da esquerda a matriz da direita com verificação
+
+Matriz Matriz::operator * (const Matriz& m1)
+{
+	if (PodeMultiplicar(&m1)) {
+		Matriz temp = *this;
+		Apagar();
+		Iniciar(temp.colunas, m1.linhas);
+		for (int i = 0; i < temp.linhas; i++)
+		{
+			for (int j = 0; j < temp.colunas; j++)
+			{
+				for (int k = 0; k < temp.colunas; k++)
+				{
+					elems[i][j] += temp.elems[i][k] * m1.elems[k][j];
+				}
+			}
+		}
+	}
+	else
+	{
+		printf("\nO produto nao eh possivel");
+	}
+	return *this;
+}
+
+Matriz Matriz::DecomporLU()
+{
+	if (linhas != colunas) return *this;
+}
+
