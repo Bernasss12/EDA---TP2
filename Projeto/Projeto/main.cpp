@@ -33,7 +33,8 @@ int main()
 	{
 		printf("\nFail\n\n\n");
 	};
-	matriz_a.Escrever();
+
+	matriz_a.DecomporLU().Escrever();
 
 	//Este ficheiro não contém nada de relevante para o trabalho e foi apenas utilizado para confirmar que todos os métodos, operadores e contrutores funcionavam como desejado.
 
